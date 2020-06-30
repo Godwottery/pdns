@@ -29,9 +29,7 @@ CREATE TABLE records (
   CONSTRAINT c_lowercase_name CHECK (((name)::TEXT = LOWER((name)::TEXT)))
 );
 
-CREATE INDEX rec_name_index ON records(name);
 CREATE INDEX nametype_index ON records(name,type);
-CREATE INDEX domain_id ON records(domain_id);
 CREATE INDEX recordorder ON records (domain_id, ordername text_pattern_ops);
 
 
@@ -57,7 +55,6 @@ CREATE TABLE comments (
   CONSTRAINT c_lowercase_name CHECK (((name)::TEXT = LOWER((name)::TEXT)))
 );
 
-CREATE INDEX comments_domain_id_idx ON comments (domain_id);
 CREATE INDEX comments_name_type_idx ON comments (name, type);
 CREATE INDEX comments_order_idx ON comments (domain_id, modified_at);
 
